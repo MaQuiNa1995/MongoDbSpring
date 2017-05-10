@@ -1,6 +1,8 @@
 package es.cic.cmunoz;
 
-import es.cic.cmunoz.backend.repository.PersonRepository;
+import es.cic.cmunoz.backend.dominio.Curvas;
+import es.cic.cmunoz.backend.repository.CurvasRepository;
+import es.cic.cmunoz.backend.util.Utilidades;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -16,37 +18,13 @@ public class Main {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(MongoConfiguration.class);
 
-        PersonRepository personRepository = context.getBean(PersonRepository.class);
+        CurvasRepository personRepository = context.getBean(CurvasRepository.class);
+        Utilidades utilidades = context.getBean(Utilidades.class);
 
-        // cleanup person collection before insertion
-        personRepository.dropPersonCollection();
-
-        //create person collection
-        personRepository.createPersonCollection();
-
-        long startTime = System.currentTimeMillis();
-        for (int i = 0; i < 1000; i++) {
-            personRepository.insertPersonWithNameJohnathan(Math.ceil(Math.random() * 100));
-        }
-        long endTime = System.currentTimeMillis();
-        LOGGER.info("Load Took " + (endTime - startTime) / 1000 + " seconds");
-
-
-        startTime = System.currentTimeMillis();
-        personRepository.countAllPersons();
-        endTime = System.currentTimeMillis();
-        LOGGER.info("Count All Took " + (endTime - startTime)  / 1000 + " seconds");
-
-
-        /***
-         *
-         * Added Under Age Test For someone to see
-         *
-         */
-        startTime = System.currentTimeMillis();
-        personRepository.countUnderAge();
-        endTime = System.currentTimeMillis();
-        LOGGER.info("Under age search Took " + (endTime - startTime) / 1000 + " seconds");
+        
+        
+        Curvas curva = new Curvas(0, "sdf", 0, "dfgdf", utilidades.generarValores(), utilidades.generarFlags());
+        personRepository.save(curva);
 
 
 
