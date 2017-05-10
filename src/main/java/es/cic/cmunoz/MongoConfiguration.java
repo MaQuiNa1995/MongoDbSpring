@@ -1,4 +1,4 @@
-package com.johnathanmarksmith.mongodb.example;
+package es.cic.cmunoz;
 
 import com.mongodb.Mongo;
 import com.mongodb.ServerAddress;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 @Configuration
 @EnableMongoRepositories
-@ComponentScan(basePackageClasses = {MongoDBApp.class})
+@ComponentScan(basePackageClasses = {Main.class})
 @PropertySource("classpath:application.properties")
 public class MongoConfiguration extends AbstractMongoConfiguration {
 
@@ -60,7 +60,7 @@ public class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Override
     protected String getMappingBasePackage() {
-        return "com.johnathanmarksmith.mongodb.example.domain";
+        return "es.cic.cmunoz.backend.dominio";
     }
 
 }

@@ -1,4 +1,4 @@
-package com.johnathanmarksmith.mongodb.example.repository;
+package es.cic.cmunoz.backend.repository;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import com.johnathanmarksmith.mongodb.example.domain.Person;
+import es.cic.cmunoz.backend.dominio.Person;
 
 
 /**

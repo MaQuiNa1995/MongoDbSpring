@@ -1,5 +1,6 @@
-package com.johnathanmarksmith.mongodb.example.repository;
+package es.cic.cmunoz.backend.repository;
 
+import es.cic.cmunoz.backend.repository.PersonRepository;
 import static com.lordofthejars.nosqlunit.mongodb.MongoDbRule.MongoDbRuleBuilder.newMongoDbRule;
 import static org.fest.assertions.Assertions.assertThat;
 

@@ -1,4 +1,4 @@
-package com.johnathanmarksmith.mongodb.example.domain;
+package es.cic.cmunoz.backend.dominio;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

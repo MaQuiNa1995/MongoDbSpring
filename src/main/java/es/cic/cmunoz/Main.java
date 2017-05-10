@@ -1,18 +1,18 @@
-package com.johnathanmarksmith.mongodb.example;
+package es.cic.cmunoz;
 
-import com.johnathanmarksmith.mongodb.example.repository.PersonRepository;
+import es.cic.cmunoz.backend.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
-public class MongoDBApp {
+public class Main {
 
-    static final Logger logger = LoggerFactory.getLogger(MongoDBApp.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        logger.info("MongoDemo application");
+        LOGGER.info("MongoDemo application");
 
         ApplicationContext context = new AnnotationConfigApplicationContext(MongoConfiguration.class);
 
@@ -29,13 +29,13 @@ public class MongoDBApp {
             personRepository.insertPersonWithNameJohnathan(Math.ceil(Math.random() * 100));
         }
         long endTime = System.currentTimeMillis();
-        logger.info("Load Took " + (endTime - startTime) / 1000 + " seconds");
+        LOGGER.info("Load Took " + (endTime - startTime) / 1000 + " seconds");
 
 
         startTime = System.currentTimeMillis();
         personRepository.countAllPersons();
         endTime = System.currentTimeMillis();
-        logger.info("Count All Took " + (endTime - startTime)  / 1000 + " seconds");
+        LOGGER.info("Count All Took " + (endTime - startTime)  / 1000 + " seconds");
 
 
         /***
@@ -46,11 +46,11 @@ public class MongoDBApp {
         startTime = System.currentTimeMillis();
         personRepository.countUnderAge();
         endTime = System.currentTimeMillis();
-        logger.info("Under age search Took " + (endTime - startTime) / 1000 + " seconds");
+        LOGGER.info("Under age search Took " + (endTime - startTime) / 1000 + " seconds");
 
 
 
 
-        logger.info("MongoDemo application");
+        LOGGER.info("MongoDemo application");
     }
 }
