@@ -27,8 +27,6 @@ public class Utilidades {
      */
     public String generarCups(int numeroCups) {
 
-        LOG.info("Generando cups");
-
         final String PRINCIPIOCUPS = "ES00277000000000";
         final String FINCUPS = "0F";
 
@@ -51,8 +49,6 @@ public class Utilidades {
      */
     public List<Integer> generarId() {
 
-        LOG.info("Generando arreglo de Id Curvas");
-
         List<Integer> mapaIds = new ArrayList<>();
 
         for (int i = 1; i < 1000001; i++) {
@@ -68,8 +64,6 @@ public class Utilidades {
      * @return mapaFechas - Lista de fechas generadas
      */
     public List<String> generarFechas() {
-
-        LOG.info("Generando arreglo de fechas");
 
         final String ANNO = "2016";
         final int arraymeses[] = generarDiasMeses();
@@ -115,8 +109,6 @@ public class Utilidades {
      * formateadas
      */
     public String[] generarCincoFechas() {
-
-        LOG.info("Generando cinco fechas");
 
         final String ANNO = "2016";
 
@@ -191,8 +183,6 @@ public class Utilidades {
      */
     public int[] generarValores() {
 
-        LOG.info("Generando Valores");
-
         int[] arregloValores = new int[25];
 
         for (int i = 0; i < arregloValores.length; i++) {
@@ -210,8 +200,6 @@ public class Utilidades {
      * formateado
      */
     public int[] generarFlags() {
-
-        LOG.info("Generando Flags");
 
         int[] arregloFlag = new int[25];
 
@@ -303,8 +291,6 @@ public class Utilidades {
      */
     public int[] generarArregloIds() {
 
-        LOG.info("Generando arreglo de ids");
-
         final int[] ARREGLOIDS = {
             1, 200000, 400000,
             600000, 800000,
@@ -321,8 +307,6 @@ public class Utilidades {
      */
     public List<String> generarArreglosCups() {
 
-        LOG.info("Generando arreglo de cups");
-
         Random rand = new Random();
         List<String> arregloRandoms = new ArrayList<>();
 
@@ -332,6 +316,49 @@ public class Utilidades {
         }
 
         return arregloRandoms;
+    }
+    
+    /**
+     * Método usado para la generación de valores
+     *
+     * @return magnitudGenerada - String que representa el valor generado y
+     * formateado
+     */
+    public String generarValoresCadena() {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 24; i++) {
+            sb.append("1678;");
+        }
+        sb.append("1678");
+
+        String magnitudGenerada = sb.toString();
+
+        return magnitudGenerada;
+
+    }
+
+    /**
+     * Método usado para la generación de flags
+     *
+     * @return flagGenerada - String que representa el valor generado y
+     * formateado
+     */
+    public String generarFlagsCadena() {
+
+        StringBuilder sb = new StringBuilder();
+        final int LIMITE = 2;
+        Random rand = new Random();
+        for (int i = 0; i < 24; i++) {
+            sb.append(String.valueOf(rand.nextInt(LIMITE)));
+            sb.append(";");
+        }
+        sb.append(String.valueOf(rand.nextInt(LIMITE)));
+
+        String flagGenerada = sb.toString();
+
+        return flagGenerada;
     }
 
     /**

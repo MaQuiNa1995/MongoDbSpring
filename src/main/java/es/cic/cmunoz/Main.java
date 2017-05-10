@@ -19,6 +19,7 @@ public class Main {
         ApplicationContext context = new AnnotationConfigApplicationContext(MongoConfiguration.class);
 
         CurvasService curvasService = context.getBean(CurvasService.class);
+
         
         curvasService.hacerOperaciones();
 

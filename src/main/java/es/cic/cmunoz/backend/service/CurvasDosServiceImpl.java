@@ -1,6 +1,8 @@
 package es.cic.cmunoz.backend.service;
 
 import es.cic.cmunoz.backend.dominio.Curvas;
+import es.cic.cmunoz.backend.dominio.CurvasDos;
+import es.cic.cmunoz.backend.repository.CurvasDosRepository;
 import es.cic.cmunoz.backend.repository.CurvasRepository;
 import es.cic.cmunoz.backend.util.Utilidades;
 import java.util.ArrayList;
@@ -14,14 +16,16 @@ import org.springframework.stereotype.Service;
  * Clase usada para el llamado a métodos del repository registrando los segundos
  */
 @Service
-public class CurvasServiceImpl implements CurvasService {
+public class CurvasDosServiceImpl implements CurvasDosService {
 
-    private static final Logger LOG = Logger.getLogger(CurvasServiceImpl.class.getName());
+    private static final Logger LOG = Logger.getLogger(CurvasDosServiceImpl.class.getName());
 
     /**
      * Objeto que contiene todos los métodos necesarios para el tratamiento de
      * la base de datos
      */
+    @Autowired
+    private CurvasDosRepository repositoryDos;
     @Autowired
     private CurvasRepository repository;
 
@@ -132,10 +136,6 @@ public class CurvasServiceImpl implements CurvasService {
         List<Integer> listaId = utilidad.generarId();
 
         List<Curvas> listaCurvasGuardar = new ArrayList<>();
-
-        Curvas curva2 = new Curvas();
-        curva2.setCups("hola");
-        listaCurvasGuardar.add(curva2);
 
         for (int i = 1; i < 1000001; i++) {
 
@@ -259,43 +259,44 @@ public class CurvasServiceImpl implements CurvasService {
      */
     public void guardarMillonCadenas() {
 
-        LOG.info("Inicio guardarMillonCadenas");
+        LOG.info("Inicio guardarMillon");
 
         List<String> listaFechas = utilidad.generarFechas();
         List<Integer> listaId = utilidad.generarId();
 
-        List<Curvas> listaCurvasGuardar = new ArrayList<>();
+        List<CurvasDos> listaCurvasGuardar = new ArrayList<>();
 
         for (int i = 1; i < 1000001; i++) {
 
-            Curvas curva = new Curvas();
+            CurvasDos curva = new CurvasDos();
 
             curva.setIdCurva(listaId.get(i - 1));
             curva.setCups(utilidad.generarCups(i));
             curva.setMagnitud(7);
-            curva.setValores(utilidad.generarValores());
+            curva.setValores(utilidad.generarValoresCadena());
             curva.setFecha(listaFechas.get(i - 1));
-            curva.setFlag(utilidad.generarFlags());
+            curva.setFlag(utilidad.generarFlagsCadena());
 
             listaCurvasGuardar.add(curva);
         }
 
         long antes = Utilidades.conseguirHora();
 
-        repository.save(listaCurvasGuardar);
+        repositoryDos.save(listaCurvasGuardar);
 
         long despues = Utilidades.conseguirHora();
 
         long tiempoSacado = utilidad.calcularTiempo(antes, despues);
 
         utilidad.registrarActividad(
-                "guardarMillonCadenas: " + tiempoSacado / 1000f + " Segundos"
+                "guardarMillon: " + tiempoSacado / 1000f + " Segundos"
         );
     }
 
     @Override
     public void hacerOperaciones() {
         guardarMillon();
+        guardarMillonCadenas();
         verCincoCups();
         verCincoFechas();
         verSeisIdCurvas();
