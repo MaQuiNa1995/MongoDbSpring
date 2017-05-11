@@ -1,10 +1,15 @@
 package es.cic.cmunoz.backend.repository;
 
+import es.cic.cmunoz.backend.dominio.Curvas;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  * Interfaz que uso para la adición de métodos propios que no tiene
  * CrudRepository por defecto
  */
-public interface CurvasRepositoryCustom {
+@Repository
+public interface CurvasRepositoryCustom extends CrudRepository<Curvas, Long>{
 
     /**
      * Método usado para hacer la actualización (Update) de las curvas que

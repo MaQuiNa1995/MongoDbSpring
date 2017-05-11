@@ -1,8 +1,6 @@
 package es.cic.cmunoz.backend.dominio;
 
 import java.util.Arrays;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -50,8 +48,6 @@ public class Curvas {
         this.id = id;
     }
 
-    @Min(value=1, message="El id de la curva tiene que ser mayor de 1")
-//    @Max(value=, message="El  tiene que ser menor de ")
     public int getIdCurva() {
         return idCurva;
     }
@@ -60,7 +56,6 @@ public class Curvas {
         this.idCurva = idCurva;
     }
 
-    @Size(min = 25, max = 25, message = "Cups no valido tiene que tener 25 caracteres")
     public String getCups() {
         return cups;
     }
@@ -69,7 +64,6 @@ public class Curvas {
         this.cups = cups;
     }
 
-    @Min(value=7, message="El id de la curva tiene que ser mayor de 1")
     public int getMagnitud() {
         return magnitud;
     }
@@ -78,7 +72,6 @@ public class Curvas {
         this.magnitud = magnitud;
     }
 
-    @Size(min = 8, max = 8, message = "Fecha no valida tiene que tener 8 caracteres")
     public String getFecha() {
         return fecha;
     }
@@ -87,7 +80,6 @@ public class Curvas {
         this.fecha = fecha;
     }
 
-    @Size(min = 25, max = 25, message = "Arreglo de valores no valido, tiene que tener 25 elementos")
     public int[] getValores() {
         return valores;
     }
@@ -96,7 +88,6 @@ public class Curvas {
         this.valores = valores;
     }
 
-    @Size(min = 25, max = 25, message = "Arreglo de flags no valido, tiene que tener 25 elementos")
     public int[] getFlag() {
         return flag;
     }

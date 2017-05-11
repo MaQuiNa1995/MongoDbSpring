@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 /**
  * Clase usada para el llamado a métodos del repository registrando los segundos
  */
+@Service
 public interface CurvasService {
 
     /**
